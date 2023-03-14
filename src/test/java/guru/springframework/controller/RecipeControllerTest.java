@@ -1,6 +1,6 @@
 package guru.springframework.controller;
 
-import guru.springframework.entity.Recipe;
+import guru.springframework.domain.Recipe;
 import guru.springframework.service.RecipeService;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,7 +10,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
-import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;

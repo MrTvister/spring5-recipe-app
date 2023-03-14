@@ -1,6 +1,6 @@
 package guru.springframework.service;
 
-import guru.springframework.entity.Recipe;
+import guru.springframework.domain.Recipe;
 import guru.springframework.repository.RecipeRepository;
 import junit.framework.TestCase;
 import org.junit.Before;

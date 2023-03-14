@@ -1,6 +1,6 @@
 package guru.springframework.bootsrap;
 
-import guru.springframework.entity.*;
+import guru.springframework.domain.*;
 import guru.springframework.repository.CategoryRepository;
 import guru.springframework.repository.RecipeRepository;
 import guru.springframework.repository.UnitOfMeasureRepository;

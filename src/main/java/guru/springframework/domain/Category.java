@@ -1,4 +1,4 @@
-package guru.springframework.entity;
+package guru.springframework.domain;
 
 import lombok.*;
 
