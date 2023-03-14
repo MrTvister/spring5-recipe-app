@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Optional;
 @Slf4j
 @Service
 public class RecipeServiceImpl implements RecipeService{
@@ -23,5 +24,13 @@ public class RecipeServiceImpl implements RecipeService{
         recipeRepository.findAll().iterator().forEachRemaining(recipes::add);
 
         return recipes;
+    }
+    @Override
+    public Recipe findById(Long l){
+        Optional<guru.springframework.entity.Recipe> recipeOptional = recipeRepository.findById(l);
+        if(!recipeOptional.isPresent()){
+            throw new RuntimeException("Recipe niot found");
+        }
+        return  recipeOptional.get();
     }
 }
