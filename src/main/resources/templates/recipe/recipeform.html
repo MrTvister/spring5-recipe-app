@@ -65,10 +65,15 @@
                 </div>
                 <div class="col-md-3 form-group">
                   <label>Difficulty:</label>
-                  <select class="form-control">
-                    <option>Easy</option>
-                    <option>Medium</option>
-                    <option>Hard</option>
+                  <select class="form-control" th:field="*{difficulty}"/>
+                  <option th:each="difval : ${T(guru.springframework.domain.Difficulty).values()}"
+                          th:value="${difval.name()}"
+                          th:text="${difval.name()}">val</option>
+                  </select>
+                  <select class="form-control" th:remove="all"/>
+                      <option >EASE</option>
+                      <option >MEDIUM</option>
+                      <option >HARD</option>
                   </select>
                 </div>
               </div>

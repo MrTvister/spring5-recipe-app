@@ -35,7 +35,7 @@ public class RecipeServiceImpl implements RecipeService{
     }
     @Override
     public Recipe findById(Long l){
-        Optional<guru.springframework.domain.Recipe> recipeOptional = recipeRepository.findById(l);
+        Optional<Recipe> recipeOptional = recipeRepository.findById(l);
         if(!recipeOptional.isPresent()){
             throw new RuntimeException("Recipe niot found");
         }
@@ -55,7 +55,7 @@ public class RecipeServiceImpl implements RecipeService{
 
     @Override
     public RecipeCommand findCommandById(Long l) {
-        Optional<guru.springframework.domain.Recipe> recipeOptional = recipeRepository.findById(l);
+        Optional<Recipe> recipeOptional = recipeRepository.findById(l);
         if(!recipeOptional.isPresent()){
             throw new RuntimeException("Recipe niot found");
         }
