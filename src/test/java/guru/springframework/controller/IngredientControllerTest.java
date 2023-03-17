@@ -6,14 +6,11 @@ import guru.springframework.commands.RecipeCommand;
 import guru.springframework.service.IngredientService;
 import guru.springframework.service.RecipeService;
 import guru.springframework.service.UnitOfMeasureService;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.http.MediaType;
-import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -150,7 +147,7 @@ public class IngredientControllerTest {
         verify(ingredientService, times(1)).deleteById(anyLong(), anyLong());
     }
     @Test
-    public void renderImagefropDB(){
+    public void renderImagefropDB() throws Exception {
         RecipeCommand recipeCommand = new RecipeCommand();
         recipeCommand.setId(1l);
 
@@ -162,7 +159,7 @@ public class IngredientControllerTest {
         }
         recipeCommand.setImage(imageByte);
         when(recipeService.findCommandById(anyLong())).thenReturn(recipeCommand);
-        MockHttpServletResponse response = mockMvc.perform(get("/recipe/1/recipeimage"))
+        MockHttpServletResponse response = mockMvc.perform(get("recipe/1/recipeimage"))
                 .andExpect(status().isOk())
                 .andReturn().getResponse();
         byte [] resBytes = response.getContentAsByteArray();
