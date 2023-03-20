@@ -2,6 +2,7 @@ package guru.springframework.controller;
 
 
 import guru.springframework.commands.RecipeCommand;
+import guru.springframework.exception.NotFoundException;
 import guru.springframework.service.ImageService;
 import guru.springframework.service.RecipeService;
 import org.junit.Before;
@@ -30,7 +31,9 @@ public class ImageControllerTest {
         MockitoAnnotations.initMocks(this);
 
         controller = new ImageController(imageService, recipeService);
-        mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(controller)
+                                    .setControllerAdvice(new ControllerExceptionHandler())
+                .build();
     }
 
     @Test
@@ -60,5 +63,13 @@ public class ImageControllerTest {
                 .andExpect(header().string("Location", "/recipe/1/show"));
 
         verify(imageService, times(1)).saveImageFile(anyLong(), any());
+    }
+
+    @Test
+    public void testGetImageNumberFormatException() throws Exception {
+        when(recipeService.findById(anyLong())).thenThrow(NumberFormatException.class);
+        mockMvc.perform(get("/recipe/asdf/recipeimage"))
+                .andExpect(status().isBadRequest())
+                .andExpect(view().name("error"));
     }
 }
