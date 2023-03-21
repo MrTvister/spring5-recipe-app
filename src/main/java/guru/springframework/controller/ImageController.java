@@ -48,6 +48,7 @@ public class ImageController {
     }
     @GetMapping("recipe/{id}/recipeimage")
     public void renderImageFromDB(@PathVariable String id, HttpServletResponse response) throws IOException {
+        System.out.println(id);
         RecipeCommand recipeCommand = recipeService.findCommandById(Long.parseLong(id));
         if(recipeCommand.getImage() != null) {
             byte[] byteArray = new byte[recipeCommand.getImage().length];

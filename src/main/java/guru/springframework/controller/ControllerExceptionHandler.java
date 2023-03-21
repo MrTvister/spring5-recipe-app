@@ -14,9 +14,11 @@ public class ControllerExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(NumberFormatException.class)
     public ModelAndView handleNumberFormat(Exception exception){
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\r\n\r\n\r\n\r\n");
         log.error(exception.getMessage());
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("errer", "400 Bad Request");
+        modelAndView.setViewName("error");
+        modelAndView.addObject("error", "400 Bad Request");
         modelAndView.addObject("exception", exception);
         return modelAndView;
     }
