@@ -4,6 +4,7 @@ import guru.springframework.domain.UnitOfMeashure;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.DirtiesContext;
@@ -24,17 +25,18 @@ public class UnitOfMeasureRepositoryIT {
     public void setUp() throws Exception {
 
     }
-
     @Test
-    @DirtiesContext
-    public void findByDescription() {
-        Optional<UnitOfMeashure> unitOfMeashure = unitOfMeasureRepository.findByDescription("Teaspoon");
-        assertEquals("Teaspoon", unitOfMeashure.get().getDescription());
+    public void findByDescription() throws Exception {
+
+        Optional<UnitOfMeashure> uomOptional = unitOfMeasureRepository.findByDescription("Teaspoon");
+        assertEquals("Teaspoon", uomOptional.get().getDescription());
     }
 
     @Test
-    public void findByDescriptionCup() {
-        Optional<UnitOfMeashure> unitOfMeashure = unitOfMeasureRepository.findByDescription("Cup");
-        assertEquals("Cup", unitOfMeashure.get().getDescription());
+    public void findByDescriptionCup() throws Exception {
+
+        Optional<UnitOfMeashure> uomOptional = unitOfMeasureRepository.findByDescription("Cup");
+
+        assertEquals("Cup", uomOptional.get().getDescription());
     }
 }
